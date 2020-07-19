@@ -20,14 +20,6 @@ pub struct Entity {
 }
 
 impl Entity {
-    pub fn add_entity(id: Uuid, entity: Entity) {
-        ENTITIES.lock().unwrap().insert(id, entity);
-    }
-
-    pub fn get_entities() -> MutexGuard<'static,HashMap<Uuid, Entity>> {
-        ENTITIES.lock().unwrap()
-    }
-
     pub fn create_entity(x: f32, y: f32) -> Uuid {
         let id = Uuid::new_v4();
         let e = Entity {
@@ -39,8 +31,20 @@ impl Entity {
         id
     }
 
+    pub fn add_entity(id: Uuid, entity: Entity) {
+        ENTITIES.lock().unwrap().insert(id, entity);
+    }
+
+    pub fn get_entities() -> MutexGuard<'static,HashMap<Uuid, Entity>> {
+        ENTITIES.lock().unwrap()
+    }
+
     pub fn set_coords(&mut self, x: f32, y: f32) {
         self.x = x;
         self.y = y;
+    }
+    
+    pub fn get_coords(&self) -> (f32, f32) {
+         (self.x,self.y)
     }
 }

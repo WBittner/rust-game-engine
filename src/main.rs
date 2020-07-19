@@ -21,4 +21,12 @@ fn main() {
     Entity::get_entities().remove(&y);
     println!("{:#?}", Entity::get_entities());
 
+    let y = Entity::create_entity(2.30, 33.30);
+    println!("{}", Entity::get_entities().len());
+
+    Entity::get_entities().values_mut()
+        .for_each(|e| e.set_coords(e.get_coords().0 + 2.2, e.get_coords().1 + 2.2));
+    
+    Entity::get_entities().values()
+        .for_each(|e| println!("{:#?}", e));
 }
