@@ -25,7 +25,7 @@ fn main() {
     println!("{}", Entity::get_entities().len());
 
     Entity::get_entities().values_mut()
-        .for_each(|e| e.set_coords(e.get_coords().0 + 2.2, e.get_coords().1 + 2.2));
+        .for_each(|e| e.set_coords(e.get_x() + 2.2, e.get_y() + 2.2));
     
     Entity::get_entities().values()
         .for_each(|e| println!("{:#?}", e));
