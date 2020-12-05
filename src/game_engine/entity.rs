@@ -17,6 +17,8 @@ pub struct Entity {
     //spite: Sprite
     //TODO: image index
     //image_index: ImageIndex
+    //TODO: tick action
+    //tick_action: Action
 }
 
 impl Entity {
@@ -42,6 +44,11 @@ impl Entity {
     pub fn set_coords(&mut self, x: f32, y: f32) {
         self.x = x;
         self.y = y;
+    }
+    
+    pub fn set_coords_rel(&mut self, x: f32, y: f32) {
+        self.x += x;
+        self.y += y;
     }
     
     pub fn get_x(&self) -> f32 { self.x }

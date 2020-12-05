@@ -1,6 +1,7 @@
 mod game_engine;
 use game_engine::entity::Entity;
 
+use orbtk::prelude::*;
 #[macro_use]
 extern crate lazy_static;
 
@@ -25,8 +26,21 @@ fn main() {
     println!("{}", Entity::get_entities().len());
 
     Entity::get_entities().values_mut()
-        .for_each(|e| e.set_coords(e.get_x() + 2.2, e.get_y() + 2.2));
+        .for_each(|e| e.set_coords_rel(2.2, 2.2));
     
     Entity::get_entities().values()
         .for_each(|e| println!("{:#?}", e));
+        
+    let y = Application::from_name("Test App")
+      .window(|ctx| {
+          Window::new()
+              .title("OrbTk - minimal example")
+              .position((100.0, 100.0))
+              .size(420.0, 730.0)
+              .child(TextBlock::new().text("OrbTk").build(ctx))
+              .build(ctx)
+      })
+      .run();
+
+      println!("{:#?}", y);
 }

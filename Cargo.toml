@@ -8,3 +8,5 @@ edition = "2018"
 [dependencies]
 uuid = { version = "0.8", features = ["serde", "v4"] }
 lazy_static = "1.4.0"
+orbtk = { git = "https://github.com/redox-os/orbtk.git", branch= "develop" }
+pub-sub = "*"
